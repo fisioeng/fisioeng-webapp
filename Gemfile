@@ -1,10 +1,13 @@
-source 'https://rubygems.org'
-
+source 'http://rubygems.org'
+# source 'https://production.cf.rubygems.org'
+# source 'https://gems.cloudafrica.net/'
+# source 'http://tokyo-m.rubygems.org'
+# source 'http://gems.github.com'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Mysql GEM
-gem "mysql"
+gem "mysql2"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -27,6 +30,8 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 
+gem 'simple_form'
+
 gem 'bootstrap-generators', '~> 3.3.1'
 
 gem 'devise'
@@ -38,6 +43,7 @@ gem 'active_skin'
 gem "jquery-fileupload-rails"
 
 gem 'brazilian-rails'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

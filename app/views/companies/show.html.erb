@@ -1,29 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to companies_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_company_path(@company), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show company</h1>
+</div>
 
-<p>
-  <strong>Cnpj:</strong>
-  <%= @company.cnpj %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Cnpj:</dt>
+  <dd><%= @company.cnpj %></dd>
 
-<p>
-  <strong>Alias:</strong>
-  <%= @company.alias %>
-</p>
+  <dt>Alias:</dt>
+  <dd><%= @company.alias %></dd>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+  <dt>Name:</dt>
+  <dd><%= @company.name %></dd>
 
-<p>
-  <strong>Logo:</strong>
-  <%= @company.logo %>
-</p>
+  <dt>Logo:</dt>
+  <dd><%= @company.logo %></dd>
 
-<p>
-  <strong>Description:</strong>
-  <%= @company.description %>
-</p>
+  <dt>Description:</dt>
+  <dd><%= @company.description %></dd>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+</dl>
+
+
+<%= render partial: 'branches/branches'  %>

@@ -1,13 +1,13 @@
 <div class="page-header">
-  <%= link_to companies_path, :class => 'btn btn-default' do %>
+  <%= link_to company_branches_path(@company), :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%= link_to @company, :class => 'btn btn-primary' do %>
+  <%= link_to company_branch_path(@company, @branch), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-info-sign"></span>
     Show
   <% end %>
-  <h1>Editing company</h1>
+  <h1>Editing branch</h1>
 </div>
 
 <%= render 'form' %>

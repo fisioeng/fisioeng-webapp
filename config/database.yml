@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql
+  adapter: mysql2
   pool: 5
   timeout: 5000
   host: localhost
@@ -15,7 +15,7 @@ development:
   <<: *default
   database: fisioeng_dev
   username: root
-  password: 123456
+  password: 230968
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,10 +24,10 @@ test:
   <<: *default
   database: fisioeng_test
   username: root
-  password: 123456
+  password: 230968
 
 production:
   <<: *default
   database: fisioeng_prod
   username: root
-  password: 123456
+  password: 230968

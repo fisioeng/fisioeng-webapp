@@ -1,37 +1,50 @@
-<%= form_for(@company) do |f| %>
+<%= form_for(@company, :html => { :class => "form-horizontal", :role => "form" }) do |f| %>
   <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h4>
 
       <ul>
-      <% @company.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :cnpj %><br>
-    <%= f.text_field :cnpj %>
+  <div class="form-group">
+    <%= f.label :cnpj, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :cnpj, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :alias %><br>
-    <%= f.text_field :alias %>
+  <div class="form-group">
+    <%= f.label :alias, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :alias, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :logo %><br>
-    <%= f.text_field :logo %>
+  <div class="form-group">
+    <%= f.label :logo, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :logo, :class => "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+  <div class="form-group">
+    <%= f.label :description, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, :class => "form-control" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

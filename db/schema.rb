@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325005722) do
+ActiveRecord::Schema.define(version: 20150325030944) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -45,6 +45,23 @@ ActiveRecord::Schema.define(version: 20150325005722) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "branches", force: :cascade do |t|
+    t.integer  "company_id",     limit: 4
+    t.string   "alias",          limit: 255
+    t.string   "cep",            limit: 255
+    t.string   "number",         limit: 255
+    t.string   "street_address", limit: 255
+    t.string   "neighborhood",   limit: 255
+    t.string   "city",           limit: 255
+    t.string   "uf",             limit: 255
+    t.string   "country",        limit: 255
+    t.string   "complement",     limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "branches", ["company_id"], name: "index_branches_on_company_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.string   "cnpj",        limit: 255
@@ -82,4 +99,5 @@ ActiveRecord::Schema.define(version: 20150325005722) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "branches", "companies"
 end

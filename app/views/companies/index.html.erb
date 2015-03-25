@@ -1,35 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to new_company_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Company
+  <% end %>
+  <h1>Listing companies</h1>
+</div>
 
-<h1>Listing Companies</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Cnpj</th>
-      <th>Alias</th>
-      <th>Name</th>
-      <th>Logo</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @companies.each do |company| %>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
       <tr>
-        <td><%= company.cnpj %></td>
-        <td><%= company.alias %></td>
-        <td><%= company.name %></td>
-        <td><%= company.logo %></td>
-        <td><%= company.description %></td>
-        <td><%= link_to 'Show', company %></td>
+            <th>Cnpj</th>
+            <th>Alias</th>
+            <th>Name</th>
+            <th>Logo</th>
+            <th>Description</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @companies) do |company| %>
+            <td><%= company.cnpj %></td>
+            <td><%= company.alias %></td>
+            <td><%= company.name %></td>
+            <td><%= company.logo %></td>
+            <td><%= company.description %></td>
+            <td><%= link_to 'Show', company %></td>
         <td><%= link_to 'Edit', edit_company_path(company) %></td>
         <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Company', new_company_path %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

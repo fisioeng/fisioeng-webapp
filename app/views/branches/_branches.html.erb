@@ -1,0 +1,47 @@
+<div class="page-header">
+  <%= link_to new_company_branch_path(@company), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Branch
+  <% end %>
+  <h1>Listing branches</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Company</th>
+            <th>Alias</th>
+            <th>Cep</th>
+            <th>Number</th>
+            <th>Street address</th>
+            <th>Neighborhood</th>
+            <th>City</th>
+            <th>Uf</th>
+            <th>Country</th>
+            <th>Complement</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @branches) do |branch| %>
+            <td><%= branch.company.name %></td>
+            <td><%= branch.alias %></td>
+            <td><%= branch.cep %></td>
+            <td><%= branch.number %></td>
+            <td><%= branch.street_address %></td>
+            <td><%= branch.neighborhood %></td>
+            <td><%= branch.city %></td>
+            <td><%= branch.uf %></td>
+            <td><%= branch.country %></td>
+            <td><%= branch.complement %></td>
+            <td><%= link_to 'Show', company_branch_path(branch.company, branch) %></td>
+        <td><%= link_to 'Edit', edit_company_branch_path(branch.company, branch) %></td>
+        <td><%= link_to 'Destroy', company_branch_path(branch.company, branch), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

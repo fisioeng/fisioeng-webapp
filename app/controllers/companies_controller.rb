@@ -1,4 +1,4 @@
-class CompaniesController < ApplicationController
+class CompaniesController < DefaultController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
@@ -10,6 +10,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @branches = @company.branches
   end
 
   # GET /companies/new

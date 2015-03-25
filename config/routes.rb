@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  root to: "companies#index"
+  
   resources :posts
-  resources :companies
-  #root to: "home#index"
+
+  resources :companies do
+    resources :branches
+  end
 
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
