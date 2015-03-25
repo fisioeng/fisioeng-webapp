@@ -1,0 +1,59 @@
+<%= form_for @company, :html => { :class => "form-horizontal company" } do |f| %>
+
+    <% if @company.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @company.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :cnpj, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :cnpj, :class => 'form-control' %>
+    </div>
+    <%= error_span(@company[:cnpj]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :alias, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :alias, :class => 'form-control' %>
+    </div>
+    <%= error_span(@company[:alias]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+    <%= error_span(@company[:name]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :logo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :logo, :class => 'form-control' %>
+    </div>
+    <%= error_span(@company[:logo]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :description, :class => 'form-control' %>
+    </div>
+    <%= error_span(@company[:description]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            companies_path, :class => 'btn btn-default' %>
+
+<% end %>

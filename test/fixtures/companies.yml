@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cnpj: MyString
+  alias: MyString
+  name: MyString
+  logo: MyString
+  description: MyString
+
+two:
+  cnpj: MyString
+  alias: MyString
+  name: MyString
+  logo: MyString
+  description: MyString
