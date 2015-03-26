@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: "companies#index"
   
-  resources :posts
 
   resources :companies do
     resources :branches
