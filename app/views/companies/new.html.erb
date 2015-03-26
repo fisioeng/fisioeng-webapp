@@ -1,9 +1,14 @@
-<div class="page-header">
-  <%= link_to companies_path, :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <h1>New company</h1>
-</div>
+<% content_for :nav do %>
+  <%= render "common/top_nav" %>
+<% end %>
+<div class="container">
+  <div class="page-header">
+    <%= link_to companies_path, :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-list-alt"></span>
+      Back
+    <% end %>
+    <h1>Adds a Company</h1>
+  </div>
 
-<%= render 'form' %>
+  <%= render 'form' %>
+</div>
