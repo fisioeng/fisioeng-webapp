@@ -1,1 +1,7 @@
-<%= render partial: 'branches'  %>
+<% content_for :nav do %>
+  <%= render "common/top_nav" %>
+<% end %>
+
+<div class="container">
+  <%= render partial: 'branches'  %>
+</div>
