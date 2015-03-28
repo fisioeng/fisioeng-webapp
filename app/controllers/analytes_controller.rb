@@ -8,6 +8,11 @@ class AnalytesController < InheritedResources::Base
     belongs_to :branch
   end
 
+  def show
+    @measures = @analyte.measures
+    @measure_count = @measures.count("id")
+  end
+
   def create
     @company = Company.find(params[:company_id])
     @branch = Branch.find(params[:branch_id])
