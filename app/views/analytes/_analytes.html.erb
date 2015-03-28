@@ -10,18 +10,18 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Specie profile</th>
         <th>Code</th>
         <th>Name</th>
+        <th>Specie profile</th>
         <th style="width: 140px;"></th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @analytes) do |analyte| %>
-            <td><%= analyte.specie_profile.especiename %></td>
             <td><%= analyte.code %></td>
             <td><%= analyte.name %></td>
+            <td><%= defined?(analyte.specie_profile.especiename) ? analyte.specie_profile.especiename : '-' %></td>
             <td>
               <div class="btn-group pull-right" role="group" aria-label="...">
                 <a href="<%= company_branch_analyte_path(@company, @branch, analyte) %>" class="btn btn-default"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></a>
