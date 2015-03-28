@@ -1,0 +1,22 @@
+<% content_for :nav do %>
+  <%= render "common/top_nav" %>
+<% end %>
+
+<div class="container">
+  <%= render partial: 'analytes/analytes'  %>
+
+  <div class="page-header">
+    <%= link_to edit_company_branch_path(@company, @branch), :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+    <h3>Branch</h3>
+  </div>
+
+<address>
+  <strong><%= @branch.alias %></strong><br>
+  <%= @branch.street_address %>, <%= @branch.number %> <%= @branch.complement %><br>
+  <%= @branch.neighborhood %> <br>
+  <%= @branch.city %>, <%= @branch.uf %> <%= @branch.cep %> - <%= @branch.country %><br>
+</address>
+</div>
