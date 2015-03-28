@@ -19,7 +19,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @analytes) do |analyte| %>
-            <td><%= analyte.specie_profile %></td>
+            <td><%= analyte.specie_profile.especiename %></td>
             <td><%= analyte.code %></td>
             <td><%= analyte.name %></td>
             <td>
