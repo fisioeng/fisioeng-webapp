@@ -61,6 +61,7 @@ GEM
     bourbon (4.2.1)
       sass (~> 3.4)
       thor
+    bower-rails (0.9.2)
     brI18n (3.3.0)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -260,6 +261,7 @@ DEPENDENCIES
   active_skin
   activeadmin (~> 1.0.0.pre1)
   bootstrap-generators (~> 3.3.1)
+  bower-rails
   brazilian-rails
   byebug
   coffee-rails (~> 4.1.0)
