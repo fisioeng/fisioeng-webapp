@@ -1,0 +1,38 @@
+<div class="page-header">
+  <%= link_to company_branch_analytes_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_company_branch_analyte_path(@company, @branch, @analyte), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show analyte</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Branch:</dt>
+  <dd><%= @analyte.branch.alias %></dd>
+
+  <dt>Specie profile:</dt>
+  <dd><%= @analyte.specie_profile %></dd>
+
+  <dt>Code:</dt>
+  <dd><%= @analyte.code %></dd>
+
+  <dt>Name:</dt>
+  <dd><%= @analyte.name %></dd>
+
+  <dt>Birthdate:</dt>
+  <dd><%= @analyte.birthdate %></dd>
+
+  <dt>Weight:</dt>
+  <dd><%= @analyte.weight %></dd>
+
+  <dt>Lanado:</dt>
+  <dd><%= @analyte.lanado %></dd>
+
+  <dt>Color:</dt>
+  <dd><%= @analyte.color %></dd>
+
+</dl>

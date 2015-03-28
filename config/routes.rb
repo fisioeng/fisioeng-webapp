@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :specie_profiles
   root to: "companies#index"
-  
+
 
   resources :companies do
-    resources :branches
+    resources :branches do
+      resources :analytes
+    end
   end
 
   devise_for :users

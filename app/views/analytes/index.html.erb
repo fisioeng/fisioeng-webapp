@@ -1,0 +1,43 @@
+<div class="page-header">
+  <%= link_to new_company_branch_analyte_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Analyte
+  <% end %>
+  <h1>Listing analytes</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Branch</th>
+            <th>Specie profile</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Birthdate</th>
+            <th>Weight</th>
+            <th>Lanado</th>
+            <th>Color</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @analytes) do |analyte| %>
+            <td><%= analyte.branch %></td>
+            <td><%= analyte.specie_profile %></td>
+            <td><%= analyte.code %></td>
+            <td><%= analyte.name %></td>
+            <td><%= analyte.birthdate %></td>
+            <td><%= analyte.weight %></td>
+            <td><%= analyte.lanado %></td>
+            <td><%= analyte.color %></td>
+            <td><%= link_to 'Show', company_branch_analyte_path(@company, @branch, analyte) %></td>
+        <td><%= link_to 'Edit', edit_company_branch_analyte_path(@company, @branch, analyte) %></td>
+        <td><%= link_to 'Destroy', company_branch_analyte_path(@company, @branch, analyte), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

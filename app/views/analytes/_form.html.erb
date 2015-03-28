@@ -1,0 +1,62 @@
+<%= simple_form_for([@company, @branch, @analyte], :html => { :class => "form-horizontal", :role => "form", action: company_branch_analytes_path(@company, @branch) }) do |f| %>
+  <% if @analyte.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@analyte.errors.count, "error") %> prohibited this analyte from being saved:</h4>
+
+      <ul>
+      <% @analyte.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :specie_profile, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :specie_profile, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :code, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :code, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :birthdate, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.date_select :birthdate, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :weight, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :weight, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :lanado, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :lanado, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :color, :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :color, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

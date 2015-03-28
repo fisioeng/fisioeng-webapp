@@ -1,0 +1,44 @@
+<div class="page-header">
+  <%= link_to specie_profiles_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_specie_profile_path(@specie_profile), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show specie_profile</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Especiename:</dt>
+  <dd><%= @specie_profile.especiename %></dd>
+
+  <dt>Alias:</dt>
+  <dd><%= @specie_profile.alias %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @specie_profile.description %></dd>
+
+  <dt>Min temperature:</dt>
+  <dd><%= @specie_profile.min_temperature %></dd>
+
+  <dt>Max temperature:</dt>
+  <dd><%= @specie_profile.max_temperature %></dd>
+
+  <dt>Min surface temperature:</dt>
+  <dd><%= @specie_profile.min_surface_temperature %></dd>
+
+  <dt>Max surface temperature:</dt>
+  <dd><%= @specie_profile.max_surface_temperature %></dd>
+
+  <dt>Min heart frequency:</dt>
+  <dd><%= @specie_profile.min_heart_frequency %></dd>
+
+  <dt>Min relative humidity:</dt>
+  <dd><%= @specie_profile.min_relative_humidity %></dd>
+
+  <dt>Max relative humidity:</dt>
+  <dd><%= @specie_profile.max_relative_humidity %></dd>
+
+</dl>

@@ -1,32 +1,7 @@
 class BranchesController < InheritedResources::Base
+  respond_to :html, :xml, :json
 
-  def new
-  	@company = Company.find(params[:company_id])
-  	@branch = @company.branches.new
-
-  end
-
-  def show
-  	@company = Company.find(params[:company_id])
-  	@branch = @company.branches.find(params[:id])
-  end
-
-  def edit
-  	@company = Company.find(params[:company_id])
-  	@branch = @company.branches.find(params[:id])
-  end
-
-  def create
-  	@company = Company.find(params[:company_id])
-  	@branch  = @company.branches.create(branch_params)
-  	
-  	redirect_to company_branch_path(@company, @branch)
-  end
-
-  def index
-  	@company = Company.find(params[:company_id])
-  	@branches = @company.branches.all
-  end
+  belongs_to :company
 
   private
 

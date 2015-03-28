@@ -1,0 +1,1 @@
+json.extract! @specie_profile, :id, :especiename, :alias, :description, :min_temperature, :max_temperature, :min_surface_temperature, :max_surface_temperature, :min_heart_frequency, :min_relative_humidity, :max_relative_humidity, :created_at, :updated_at

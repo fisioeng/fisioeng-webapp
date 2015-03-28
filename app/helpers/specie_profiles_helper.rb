@@ -1,0 +1,2 @@
+module SpecieProfilesHelper
+end
