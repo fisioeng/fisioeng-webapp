@@ -3,6 +3,12 @@ class BranchesController < InheritedResources::Base
 
   belongs_to :company
 
+  def show
+    @company = Company.find(params[:company_id])
+    @branch = Branch.find(params[:id])
+    @analytes = @branch.analytes
+  end
+
   private
 
     def branch_params

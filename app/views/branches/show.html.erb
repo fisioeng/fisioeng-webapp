@@ -3,48 +3,20 @@
 <% end %>
 
 <div class="container">
+  <%= render partial: 'analytes/analytes'  %>
+
   <div class="page-header">
-    <%= link_to company_branches_path(@company), :class => 'btn btn-default' do %>
-      <span class="glyphicon glyphicon-list-alt"></span>
-      Back
-    <% end %>
     <%= link_to edit_company_branch_path(@company, @branch), :class => 'btn btn-primary' do %>
       <span class="glyphicon glyphicon-pencil"></span>
       Edit
     <% end %>
-    <h1>Branch</h1>
+    <h3>Branch</h3>
   </div>
 
-  <dl class="dl-horizontal">
-    <dt>Company:</dt>
-    <dd><%= @branch.company.name %></dd>
-
-    <dt>Alias:</dt>
-    <dd><%= @branch.alias %></dd>
-
-    <dt>Cep:</dt>
-    <dd><%= @branch.cep %></dd>
-
-    <dt>Number:</dt>
-    <dd><%= @branch.number %></dd>
-
-    <dt>Street address:</dt>
-    <dd><%= @branch.street_address %></dd>
-
-    <dt>Neighborhood:</dt>
-    <dd><%= @branch.neighborhood %></dd>
-
-    <dt>City:</dt>
-    <dd><%= @branch.city %></dd>
-
-    <dt>Uf:</dt>
-    <dd><%= @branch.uf %></dd>
-
-    <dt>Country:</dt>
-    <dd><%= @branch.country %></dd>
-
-    <dt>Complement:</dt>
-    <dd><%= @branch.complement %></dd>
-
-  </dl>
+<address>
+  <strong><%= @branch.alias %></strong><br>
+  <%= @branch.street_address %>, <%= @branch.number %> <%= @branch.complement %><br>
+  <%= @branch.neighborhood %> <br>
+  <%= @branch.city %>, <%= @branch.uf %> <%= @branch.cep %> - <%= @branch.country %><br>
+</address>
 </div>
