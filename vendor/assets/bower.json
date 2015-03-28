@@ -1,0 +1,8 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "angular": "latest",
+    "highcharts-ng": "latest",
+    "highcharts": "latest"
+  }
+}
