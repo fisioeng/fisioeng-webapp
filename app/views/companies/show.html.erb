@@ -2,36 +2,37 @@
   <%= render "common/top_nav" %>
 <% end %>
 <div class="container">
+  <%= render partial: 'branches/branches'  %>
+
   <div class="page-header">
-    <%= link_to companies_path, :class => 'btn btn-default' do %>
-      <span class="glyphicon glyphicon-list-alt"></span>
-      Back
-    <% end %>
     <%= link_to edit_company_path(@company), :class => 'btn btn-primary' do %>
       <span class="glyphicon glyphicon-pencil"></span>
       Edit
     <% end %>
-    <h1>Company</h1>
+    <h3>Company</h3>
   </div>
 
-  <dl class="dl-horizontal">
-    <dt>Cnpj:</dt>
-    <dd><%= @company.cnpj %></dd>
+  <table class="table table-hover">
+    <tr>
+      <th style="width:225px;">CNPJ:</th>
+      <td><%= @company.cnpj %></td>
+    </tr>
+    <tr>
+      <th>Alias:</th>
+      <td><%= @company.alias %></td>
+    </tr>
+    <tr>
+      <th>Name:</th>
+      <td><%= @company.name %></td>
+    </tr>
+    <tr>
+      <th>Logo:</th>
+      <td><%= @company.logo %></td>
+    </tr>
+    <tr>
+      <th>Description:</th>
+      <td><%= @company.description %></td>
+    </tr>
+  </table class="table table-hover">
 
-    <dt>Alias:</dt>
-    <dd><%= @company.alias %></dd>
-
-    <dt>Name:</dt>
-    <dd><%= @company.name %></dd>
-
-    <dt>Logo:</dt>
-    <dd><%= @company.logo %></dd>
-
-    <dt>Description:</dt>
-    <dd><%= @company.description %></dd>
-
-  </dl>
-
-
-  <%= render partial: 'branches/branches'  %>
 </div>
