@@ -62,14 +62,14 @@ The second command create a new gemset to you, but if you already have it, the r
  
  Access the addres http://localhost:3000 and the system will appear to you.
 
-# TODO
+ # TODO
  ### Active admin
   * The style of active admin must to be the same of remainder of system
   * The use form has to be fixed
   * Config system variables
   * Create a seed to active admin user
 
- ### Routes to measure's graph:
+ ### Routes to measure's graph
   * Provide data as json with granularity and time filter.
   * Make the router process N graph series
 
