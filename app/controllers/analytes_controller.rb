@@ -1,4 +1,5 @@
 class AnalytesController < InheritedResources::Base
+  before_action :authenticate_user!
   before_action :setter, only: [:show, :edit, :update, :destroy]
   before_action :setter_profiles, only: [:new, :edit]
 

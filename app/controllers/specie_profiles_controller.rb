@@ -1,4 +1,5 @@
 class SpecieProfilesController < InheritedResources::Base
+  before_action :authenticate_user!
 
   private
 
