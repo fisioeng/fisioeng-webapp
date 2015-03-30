@@ -21,8 +21,8 @@
 
 <address>
   <strong><%= @branch.alias %></strong><br>
-  <%= @branch.street_address %>, <%= @branch.number %> <%= @branch.complement %><br>
+  <%= "#{@branch.street_address},  #{@branch.number}  #{@branch.complement}" %><br>
   <%= @branch.neighborhood %> <br>
-  <%= @branch.city %>, <%= @branch.uf %> <%= @branch.cep %> - <%= @branch.country %><br>
+  <%= "#{@branch.city},  #{@branch.uf} #{@branch.cep} - #{@branch.country} " %><br>
 </address>
 </div>

@@ -46,6 +46,37 @@ ActiveRecord::Schema.define(version: 20150328210123) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "analyte_analytes", force: :cascade do |t|
+    t.integer  "branch_id",          limit: 4
+    t.integer  "analyte_profile_id", limit: 4
+    t.integer  "code",               limit: 4
+    t.string   "name",               limit: 255
+    t.date     "birthdate"
+    t.integer  "weight",             limit: 4
+    t.string   "lanado",             limit: 255
+    t.string   "color",              limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "analyte_analytes", ["analyte_profile_id"], name: "index_analyte_analytes_on_analyte_profile_id", using: :btree
+  add_index "analyte_analytes", ["branch_id"], name: "index_analyte_analytes_on_branch_id", using: :btree
+
+  create_table "analyte_profiles", force: :cascade do |t|
+    t.string   "especiename",             limit: 255
+    t.string   "alias",                   limit: 255
+    t.text     "description",             limit: 65535
+    t.integer  "min_temperature",         limit: 4
+    t.integer  "max_temperature",         limit: 4
+    t.integer  "min_surface_temperature", limit: 4
+    t.integer  "max_surface_temperature", limit: 4
+    t.integer  "min_heart_frequency",     limit: 4
+    t.integer  "min_relative_humidity",   limit: 4
+    t.integer  "max_relative_humidity",   limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
   create_table "analytes", force: :cascade do |t|
     t.integer  "branch_id",         limit: 4
     t.integer  "specie_profile_id", limit: 4
@@ -90,14 +121,23 @@ ActiveRecord::Schema.define(version: 20150328210123) do
   end
 
   create_table "measures", force: :cascade do |t|
-    t.integer  "analyte_id", limit: 4
-    t.float    "value",      limit: 24
-    t.string   "unit",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "analyte_id",  limit: 4
+    t.float    "value",       limit: 24
+    t.string   "unit",        limit: 255
+    t.datetime "dateandtime"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "measures", ["analyte_id"], name: "index_measures_on_analyte_id", using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.text     "body",       limit: 65535
+    t.boolean  "published",  limit: 1
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "specie_profiles", force: :cascade do |t|
     t.string   "especiename",             limit: 255
@@ -132,6 +172,8 @@ ActiveRecord::Schema.define(version: 20150328210123) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "analyte_analytes", "analyte_profiles"
+  add_foreign_key "analyte_analytes", "branches"
   add_foreign_key "analytes", "branches"
   add_foreign_key "analytes", "specie_profiles"
   add_foreign_key "branches", "companies"
