@@ -3,8 +3,9 @@
 <% end %>
 
 <div ng-controller="ShowAnalyteController" class="container">
-  <div class="page-header">
+  <% breadcrumb( :analyte, @company, @branch, @analyte ) %>
 
+  <div class="page-header">
     <h3>Analyte</h3>
   </div>
 

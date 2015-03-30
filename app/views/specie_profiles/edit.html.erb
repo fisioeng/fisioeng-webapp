@@ -3,6 +3,9 @@
 <% end %>
 
 <div class="container">
+
+  <% breadcrumb :specie_profile, @specie_profile %>
+
   <div class="page-header">
     <%= link_to specie_profiles_path, :class => 'btn btn-default' do %>
       <span class="glyphicon glyphicon-list-alt"></span>

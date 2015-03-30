@@ -3,6 +3,9 @@
 <% end %>
 
 <div class="container">
+
+  <% breadcrumb :analyte, @company, @branch, @analyte %>
+
   <div class="page-header">
     <%= link_to company_branch_analyte_path, :class => 'btn btn-default' do %>
       <span class="glyphicon glyphicon-list-alt"></span>

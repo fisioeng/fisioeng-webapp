@@ -1,8 +1,14 @@
 <% content_for :nav do %>
   <%= render "common/top_nav" %>
 <% end %>
+<% content_for(:body_attributes) do %>
+  data-no-turbolink="true"
+<% end %>
 
 <div class="container">
+
+  <% breadcrumb( :branch, @company, @branch ) %>
+
   <%= render partial: 'analytes/analytes'  %>
 
   <div class="page-header">
