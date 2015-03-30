@@ -46,22 +46,29 @@ The second command create a new gemset to you, but if you already have it, the r
 
 * Development instructions
 
- To contribute with the fisioeng project you has to fork the repo and submit pull requests.
- In branch master we have approved issues and minimum stable version. In upstream we have approved taks but don't ready create an new version. The develop branch is use by the team to up new fixtures in development process.
+  * To contribute with the fisioeng project you has to fork the repo and submit pull requests.
+    In branch master we have approved issues and minimum stable version. In upstream we have approved taks but don't ready create an new version. The develop branch is use by the team to up new fixtures in development process.
 
- Make the instructions of Ruby version and run
- <tt>bundle install</tt>
- This will install the dependencies in gemset.
+  * If you are using any debian distribution you have to install this dependences:
+    <tt>sudo apt-get install libmysql-ruby libmysqlclient-dev</tt>
 
- After you will need to run the commands in Database section.
 
- If all goes well, install the bower dependencies using rake:
- <tt>rake bower:install</tt>
+  * Make the instructions of Ruby version and run
+    <tt>bundle install</tt>
+    This will install the dependencies in gemset.
 
- And know you can run the application in built in mode:
- <tt>rails server/tt>
+  * Now you need to go in the folder "config/" and create a file named database.yml, you can do it copying the content of database.yml.dist and changing the local values as db user name and password.
 
- Access the addres http://localhost:3000 and the system will appear to you.
+  * After you will need to run the commands in Database section.
+
+  * If all goes well, install the bower dependencies using rake:
+    <tt>rake bower:install</tt>
+
+  * And know you can run the application in built in mode:
+    <tt>rails server</tt>
+
+  * Access the addres http://localhost:3000 and the system will appear to you.
+    The default username is "obama@email.com" and the password is "obama123".
 
  # TODO
  ### Active admin
