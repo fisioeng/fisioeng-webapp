@@ -1,0 +1,38 @@
+<div class="small pull-right" style="margin-right: 15px;">Showing <b> <%= @measure_count %></b> of <b><%= @measure_count %></b> registries </div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+          <th style="vertical-align: middle;" width="200">Measure Data</th>
+          <th style="vertical-align: middle;" width="100">Date and time</th>
+          <th style="vertical-align: middle;" width="30"></th>
+        </tr>
+    </thead>
+    <tbody>
+    <%= content_tag_for(:tr, @measures) do |measure| %>
+      <td style="vertical-align: middle;"><%= measure.value %> <%= measure.unit %></td>
+      <td style="vertical-align: middle;"><%= measure.created_at %></td>
+      <td style="vertical-align: middle;">
+          <a href="#" class="btn btn-default pull-right"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+      </td>
+    <% end %>
+    </tbody>
+</table>
+<nav class="pull-center">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">«</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">»</span>
+      </a>
+    </li>
+  </ul>
+</nav>
