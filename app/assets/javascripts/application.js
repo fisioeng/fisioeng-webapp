@@ -17,6 +17,6 @@
 //= require angular/angular
 //= require highcharts
 //= require highcharts-ng
-//
+//= require angular-bootstrap
 //
 //= require_tree .
