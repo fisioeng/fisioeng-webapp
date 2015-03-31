@@ -1,3 +1,4 @@
 asset 'angular'
 asset 'highcharts-ng'
 asset 'highcharts'
+asset 'angular-bootstrap'
