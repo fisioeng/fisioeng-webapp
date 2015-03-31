@@ -50,6 +50,8 @@ gem "gretel"
 
 gem "zeus"
 
+gem 'kaminari'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

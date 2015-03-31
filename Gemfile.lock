@@ -275,6 +275,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-fileupload-rails
   jquery-rails
+  kaminari
   less-rails
   mysql2
   rails (= 4.2.1)
