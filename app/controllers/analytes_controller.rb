@@ -10,8 +10,7 @@ class AnalytesController < InheritedResources::Base
   end
 
   def show
-    @measures = @analyte.measures
-    @measure_count = @measures.count("id")
+    @measures = Measure.order(:dateandtime).page(params[:page])
   end
 
   def create
