@@ -3,8 +3,8 @@
 Hello! It's alright?
 
 We'll speak just to many about this free software that hope help the world. Yeah, we want that! But how do we think to make this with a simple software? This is the biggest problems that we want to attack with our simple solution.
-The animals got to dead every day to give us the insane to our hunger greedy of meat (not me, rs)  and the process to feed this is a big system of confinement. This system may to be cruel, making the animals spend all the life suffering and unable to express in a natural way.
-Our solution is give to the peoples a tool to know if the animals is alright, if they are expressing the normal condition of its life. Its a little step, but we have to walk..
+The animals got to dead every day to give us the insane to our hunger greedy of meat (not me, rs) and the process to feed this is a big system of confinement. This system may to be cruel, making the animals spend all the life suffering and unable to express in a natural way.
+Our solution is give to the peoples a tool to know if the animals is alright, if they are expressing the normal condition of its life. Its a little step, but we have to walk.
 
 As well, we want to help the academic area that haven't an tool to make they studies of animal behaviors. It can help they to create new process to solve the first question.
 This tool solves too the problems of academic (or not academic) that want to analyse any analyte, giving to him a abstract system to calculate statical values to give to him a good improvements to make a good choise.
@@ -13,72 +13,99 @@ With fisioeng will be possible to make a "animal traceability", to know how was 
 
 And know that you know what we do, you can contribute with this project.
 
-* What is the version of Ruby? Ruby 2.0.0
- We develop this application with the version 2.0.0 of Ruby and we use the rvm to manage this with gemsets.
- You can do this with the commands:
+## Requeriments
 
-<tt>source /home/youruse/.rvm/scripts/rvm </tt>
+- [Ruby](https://www.ruby-lang.org/en/)
+- [RVM](https://rvm.io/)
 
-<tt>rvm use 2.0.0@fisioeng --create </tt>
+We develop this application with Ruby the 2.0.0 and we use the rvm to manage this with gemsets.
 
-The second command create a new gemset to you, but if you already have it, the rvm will only switch to the gemset fisioeng and ignore the parameter --create.
+## Dependencies
 
-* Or system dependencies
- The dependencies of project is, of course, Gemfile and in bower file.
- Our main dependency are:
- #### Ruby
-  * rails 4.2.1
-  * devise
-  * activeadmin
-  * mysql2
-  * bower-rails
+The project dependencies are, of course, in Gemfile and in bower file.
+Our main dependencies are:
 
- #### Javascript and css
-  * AngularJs 1.3.*
-  * Bootstrap 3.*
+- Ruby
+  - rails 4.2.1
+  - devise
+  - activeadmin
+  - mysql2
+  - bower-rails
 
-* Database
- To create the database and with our seeds, run rake as:
+- JavaScript and css**
+  - AngularJs 1.3.*
+  - Bootstrap 3.*
 
-<tt>rake db:create</tt>
-<tt>rake db:migrate</tt>
-<tt>rake db:seed</tt>
+## Configuration
 
-* Development instructions
+After you [install](https://rvm.io/rvm/install) and [configure](https://rvm.io/rvm/basics) the RVM, run the below command to create a new gemset:
 
-  * To contribute with the fisioeng project you has to fork the repo and submit pull requests.
-    In branch master we have approved issues and minimum stable version. In upstream we have approved taks but don't ready create an new version. The develop branch is use by the team to up new fixtures in development process.
+```
+$ rvm use 2.0.0@fisioeng --create
+```
 
-  * If you are using any debian distribution you have to install this dependences:
-    <tt>sudo apt-get install libmysql-ruby libmysqlclient-dev</tt>
+Make the instructions of Ruby version and run `bundle install` to install the dependencies in gemset.
 
+### Database
 
-  * Make the instructions of Ruby version and run
-    <tt>bundle install</tt>
-    This will install the dependencies in gemset.
+Rename the config/database.yml.dist to config/database.yml and change the username and password in development, test and production database config.
 
-  * Now you need to go in the folder "config/" and create a file named database.yml, you can do it copying the content of database.yml.dist and changing the local values as db user name and password.
+```
+username: your_database_username
+password: super_secret_password
+```
 
-  * After you will need to run the commands in Database section.
+To create the database and with our seeds, run rake as:
 
-  * If all goes well, install the bower dependencies using rake:
-    <tt>rake bower:install</tt>
+```
+$ rake db:create
+$ rake db:migrate
+$ rake db:seed
+```
 
-  * And know you can run the application in built in mode:
-    <tt>rails server</tt>
+If you are using any debian distribution you have to install this dependencies:
 
-  * Access the addres http://localhost:3000 and the system will appear to you.
-    The default username is "obama@email.com" and the password is "obama123".
+```
+$ sudo apt-get install libmysql-ruby libmysqlclient-dev
+```
 
- # TODO
- ### Active admin
-  * The style of active admin must to be the same of remainder of system
-  * The use form has to be fixed
-  * Config system variables
-  * Create a seed to active admin user
+### Bower
 
- ### Routes to measure's graph
-  * Provide data as json with granularity and time filter.
-  * Make the router process N graph series
+Install the bower dependencies using rake:
 
+```
+rake bower:install
+```
 
+## Running
+
+Run the application in built in mode:
+
+```
+rails server
+```
+
+Access the address [http://localhost:3000](http://localhost:3000) in your browser and the system will appear for you.
+The default username is 'obama@email.com' and the password is 'obama123'.
+
+## Contributing
+
+- To contribute with the fisioeng project you has to fork the repo and submit pull requests.
+
+### Branch workflow:
+- master: approved issues and minimum stable version
+- upstream: approved tasks but don't ready create an new version
+- develop: use by the team to up new fixtures in development process
+
+## TODO
+
+### Active admin
+
+- The style of the current admin should to be the same of remainder of system
+- The use form has to be fixed
+- Config system variables
+- Create a seed to active admin user
+
+### Routes to measure's graph
+- Provide data as json with granularity and time filter.
+- Make the router process N graph series
