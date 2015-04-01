@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20150331010045) do
     t.integer  "analyte_id",  limit: 4
     t.float    "value",       limit: 24
     t.string   "unit",        limit: 255
-    t.datetime "dateandtime",             null: false
+    t.datetime "dateandtime"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "serie",       limit: 255
