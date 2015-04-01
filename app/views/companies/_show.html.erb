@@ -2,6 +2,9 @@
   <%= render "common/top_nav" %>
 <% end %>
 <div class="container">
+
+  <% breadcrumb :company, @company %>
+
   <%= render partial: 'branches/branches'  %>
 
   <div class="page-header">

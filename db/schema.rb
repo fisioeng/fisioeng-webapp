@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328210123) do
+ActiveRecord::Schema.define(version: 20150331010045) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -90,11 +90,14 @@ ActiveRecord::Schema.define(version: 20150328210123) do
   end
 
   create_table "measures", force: :cascade do |t|
-    t.integer  "analyte_id", limit: 4
-    t.float    "value",      limit: 24
-    t.string   "unit",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "analyte_id",  limit: 4
+    t.float    "value",       limit: 24
+    t.string   "unit",        limit: 255
+    t.datetime "dateandtime",             null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "serie",       limit: 255
+    t.string   "serie_label", limit: 255
   end
 
   add_index "measures", ["analyte_id"], name: "index_measures_on_analyte_id", using: :btree

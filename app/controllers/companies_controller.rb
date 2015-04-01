@@ -1,4 +1,5 @@
-class CompaniesController < DefaultController
+class CompaniesController < InheritedResources::Base
+  before_action :authenticate_user!
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
@@ -16,10 +17,6 @@ class CompaniesController < DefaultController
   # GET /companies/new
   def new
     @company = Company.new
-  end
-
-  # GET /companies/1/edit
-  def edit
   end
 
   # POST /companies

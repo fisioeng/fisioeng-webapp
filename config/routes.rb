@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :companies do
     resources :branches do
-      resources :analytes
+      resources :analytes do
+        resources :measures
+      end
     end
   end
 

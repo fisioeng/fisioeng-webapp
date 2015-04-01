@@ -6,6 +6,10 @@
   'use strict';
 
   angular
-    .module('Fisioeng', ['highcharts-ng']);
+    .module('Fisioeng',
+      [
+        'highcharts-ng',
+        'ui.bootstrap'
+      ]);
 
 }) ();

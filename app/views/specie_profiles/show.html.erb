@@ -1,44 +1,63 @@
-<div class="page-header">
-  <%= link_to specie_profiles_path, :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <%= link_to edit_specie_profile_path(@specie_profile), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-  <% end %>
-  <h1>Show specie_profile</h1>
+<% content_for :nav do %>
+  <%= render "common/top_nav" %>
+<% end %>
+
+<div class="container">
+
+  <% breadcrumb :specie_profile, @specie_profile %>
+
+  <div class="page-header">
+    <%= link_to specie_profiles_path, :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-list-alt"></span>
+      Back
+    <% end %>
+    <%= link_to edit_specie_profile_path(@specie_profile), :class => 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-pencil"></span>
+      Edit
+    <% end %>
+    <h1>Specie Profile</h1>
+  </div>
+
+  <table class="table table-hover">
+    <tr>
+      <th style="width:225px;">Especiename:</th>
+      <td><%= @specie_profile.especiename %></td>
+    </tr>
+    <tr>
+      <th>Alias:</th>
+      <td><%= @specie_profile.alias %></td>
+    </tr>
+    <tr>
+      <th>Description:</th>
+      <td><%= @specie_profile.description %></td>
+    </tr>
+    <tr>
+      <th>Min temperature:</th>
+      <td><%= @specie_profile.min_temperature %></td>
+    </tr>
+    <tr>
+      <th>Max temperature:</th>
+      <td><%= @specie_profile.max_temperature %></td>
+    </tr>
+    <tr>
+      <th>Min surface temperature:</th>
+      <td><%= @specie_profile.min_surface_temperature %></td>
+    </tr>
+    <tr>
+      <th>Max surface temperature:</th>
+      <td><%= @specie_profile.max_surface_temperature %></td>
+    </tr>
+    <tr>
+      <th>Min heart frequency:</th>
+      <td><%= @specie_profile.min_heart_frequency %></td>
+    </tr>
+    <tr>
+      <th>Min relative humidity:</th>
+      <td><%= @specie_profile.min_relative_humidity %></td>
+    </tr>
+    <tr>
+      <th>Max relative humidity:</th>
+      <td><%= @specie_profile.max_relative_humidity %></td>
+    </tr>
+  </table>
 </div>
-
-<dl class="dl-horizontal">
-  <dt>Especiename:</dt>
-  <dd><%= @specie_profile.especiename %></dd>
-
-  <dt>Alias:</dt>
-  <dd><%= @specie_profile.alias %></dd>
-
-  <dt>Description:</dt>
-  <dd><%= @specie_profile.description %></dd>
-
-  <dt>Min temperature:</dt>
-  <dd><%= @specie_profile.min_temperature %></dd>
-
-  <dt>Max temperature:</dt>
-  <dd><%= @specie_profile.max_temperature %></dd>
-
-  <dt>Min surface temperature:</dt>
-  <dd><%= @specie_profile.min_surface_temperature %></dd>
-
-  <dt>Max surface temperature:</dt>
-  <dd><%= @specie_profile.max_surface_temperature %></dd>
-
-  <dt>Min heart frequency:</dt>
-  <dd><%= @specie_profile.min_heart_frequency %></dd>
-
-  <dt>Min relative humidity:</dt>
-  <dd><%= @specie_profile.min_relative_humidity %></dd>
-
-  <dt>Max relative humidity:</dt>
-  <dd><%= @specie_profile.max_relative_humidity %></dd>
-
-</dl>

@@ -3,6 +3,9 @@
 <% end %>
 
 <div class="container">
+
+  <% breadcrumb :new_branch, @company %>
+
   <div class="page-header">
     <%= link_to company_branches_path(@company), :class => 'btn btn-default' do %>
       <span class="glyphicon glyphicon-list-alt"></span>

@@ -15,8 +15,13 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
-<body ng-app="Fisioeng">
+<body ng-app="Fisioeng"
+<% if content_for?(:body_attributes) %>
+    <%= yield(:body_attributes) %>
+  <% end %>>
+
   <%= yield :nav %>
   <div class="container">
     <% flash.each do |name, msg| %>
@@ -26,12 +31,15 @@
       <% end %>
     <% end %>
   </div>
+
+  <div class="container">
+    <%= breadcrumbs style: :bootstrap  %>
+  </div>
+
   <%= yield %>
 
   <footer>
     <p>&copy; 2014 - <%= Time.new.year %> - Fisioeng - All rights reserved.</p>
   </footer>
-
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

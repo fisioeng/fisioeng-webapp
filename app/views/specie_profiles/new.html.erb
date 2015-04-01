@@ -1,9 +1,18 @@
-<div class="page-header">
-  <%= link_to specie_profiles_path, :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <h1>New specie_profile</h1>
-</div>
+<% content_for :nav do %>
+  <%= render "common/top_nav" %>
+<% end %>
 
-<%= render 'form' %>
+<div class="container">
+
+  <% breadcrumb :new_specie_profile %>
+
+  <div class="page-header">
+    <%= link_to specie_profiles_path, :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-list-alt"></span>
+      Back
+    <% end %>
+    <h1>Adds Specie Profile</h1>
+  </div>
+
+  <%= render 'form' %>
+</div>

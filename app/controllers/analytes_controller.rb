@@ -1,4 +1,5 @@
 class AnalytesController < InheritedResources::Base
+  before_action :authenticate_user!
   before_action :setter, only: [:show, :edit, :update, :destroy]
   before_action :setter_profiles, only: [:new, :edit]
 
@@ -9,8 +10,7 @@ class AnalytesController < InheritedResources::Base
   end
 
   def show
-    @measures = @analyte.measures
-    @measure_count = @measures.count("id")
+    @measures = Measure.order(:dateandtime).page(params[:page])
   end
 
   def create

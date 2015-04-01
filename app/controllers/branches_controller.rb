@@ -1,4 +1,5 @@
 class BranchesController < InheritedResources::Base
+  before_action :authenticate_user!
   respond_to :html, :xml, :json
 
   belongs_to :company

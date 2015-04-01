@@ -3,6 +3,7 @@
   "dependencies": {
     "angular": "latest",
     "highcharts-ng": "latest",
-    "highcharts": "latest"
+    "highcharts": "latest",
+    "angular-bootstrap": "latest"
   }
 }
