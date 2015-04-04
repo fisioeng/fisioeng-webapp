@@ -8,44 +8,119 @@
   ShowAnalyteController.$inject = ['$scope'];
 
   function ShowAnalyteController($scope) {
-    $scope.chartSeries = [
-      {
-        "name": "Control in °C",
-        "data": [32.5, 33.6, 31.5, 39.8, 41.4, 40.5, 39.0, 33.5]
-      },
-      {
-        "name": "Variation 1 in °C",
-        "data": [23.5, 27.6, 25.5, 19.8, 33.4, 30.5, 35.0, 29.5]
-      },
-      {
-        "name": "Variation 2 in °C",
-        "data": [25.5, 30.6, 21.5, 34.8, 28.4, 31.5, 35.0, 37.5]
-      }
+
+    var categories = [],
+        x;
+
+    for (var i = 0; i <= 20; i++) {
+      x = i;
+      if ( i < 9)
+        x = '0'+i;
+
+      categories.push('2015-03-28 14:'+ x +':00');
+    }
+
+    $scope.axis = {};
+    $scope.axis.y = {};
+    $scope.axis.y.options = [
+      {value: '°C', label: 'Temperature in °C'},
+      {value: 'URA', label: 'Relative Humidity in %'},
+      {value: 'B/m', label: 'Heart Frequency B/m'}
     ];
 
-    $scope.chartConfig = {
-      options: {
-        chart: {
-          type: 'spline'
+
+
+    var series =
+    [
+      [
+        {
+          "name": "Control",
+          "data": getAleatory(20, 17, 49)
         },
-        plotOptions: {
-          series: {
-            stacking: ''
-          }
+        {
+          "name": "Variation 1",
+          "data": getAleatory(20, 17, 49)
+        },
+        {
+          "name": "Variation 2",
+          "data": getAleatory(20, 17, 49)
         }
-      },
-      xAxis: {
-          categories: ['2015-03-28 14:27:00', '2015-03-28 14:28:00', '2015-03-28 14:29:00', '2015-03-28 14:30:00', '2015-03-28 14:31:00', '2015-03-28 14:32:00', '2015-03-28 14:33:00', '2015-03-28 14:34:00']
-      },
-      series: $scope.chartSeries,
-      title: {
-        text: 'Analyte Measures'
-      },
-      credits: {
-        enabled: true
-      },
-      loading: false,
-      size: {}
+      ],
+      [
+        {
+          "name": "Control",
+          "data": getAleatory(20, 10, 70)
+        },
+        {
+          "name": "Variation 1",
+          "data": getAleatory(20, 10, 70)
+        }
+      ],
+      [
+        {
+          "name": "Control",
+          "data": getAleatory(20, 50, 130)
+        },
+        {
+          "name": "Variation 1",
+          "data": getAleatory(20, 50, 130)
+        }
+      ]
+    ];
+
+    $scope.actualYAxis = 0;
+    $scope.chartSeries = series[$scope.actualYAxis];
+
+    updateGraph();
+
+    $scope.changeYAxis = function (serie) {
+      $scope.chartSeries = series[serie];
+      updateGraph();
+    };
+
+    function updateGraph() {
+      $scope.chartConfig = {
+        options: {
+          chart: {
+            type: 'spline'
+          },
+          plotOptions: {
+            series: {
+              stacking: ''
+            }
+          }
+        },
+        xAxis: {
+            categories: categories
+        },
+        yAxis: {
+            title: {
+                text: $scope.axis.y.options[$scope.actualYAxis].label
+            }
+        },
+        tooltip: {
+            valueSuffix: '°C'
+        },
+        series: $scope.chartSeries,
+        title: {
+          text: 'Analyte Measures'
+        },
+        credits: {
+          enabled: true
+        },
+        loading: false,
+        size: {}
+      };
+    }
+
+    function getAleatory ( amount, min, max ) {
+
+      var data = [];
+      for (var i = 1; i <= amount; i++ ) {
+        data.push(Math.floor((Math.random() * (max - min)) + min ));
+      }
+
+      return data;
     }
   }
 
