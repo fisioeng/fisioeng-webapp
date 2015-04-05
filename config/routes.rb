@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  resources :specie_profiles
   root to: "companies#index"
 
+  resources :specie_profiles
 
   resources :companies do
     resources :branches do
       resources :analytes do
-        resources :measures
+        resources :samplings do
+          resources :measures
+        end
       end
     end
   end

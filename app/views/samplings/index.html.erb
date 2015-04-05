@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_sampling_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Sampling
+  <% end %>
+  <h1>Listing samplings</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Analyte</th>
+            <th>Name</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @samplings) do |sampling| %>
+            <td><%= sampling.analyte %></td>
+            <td><%= sampling.name %></td>
+            <td><%= link_to 'Show', sampling %></td>
+        <td><%= link_to 'Edit', edit_sampling_path(sampling) %></td>
+        <td><%= link_to 'Destroy', sampling, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
