@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405173600) do
+ActiveRecord::Schema.define(version: 20150409021339) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(version: 20150405173600) do
   end
 
   create_table "measures", force: :cascade do |t|
-    t.integer  "analyte_id",  limit: 4
     t.float    "value",       limit: 24
     t.string   "unit",        limit: 255
     t.datetime "dateandtime",             null: false
@@ -98,9 +97,10 @@ ActiveRecord::Schema.define(version: 20150405173600) do
     t.datetime "updated_at",              null: false
     t.string   "serie",       limit: 255
     t.string   "serie_label", limit: 255
+    t.integer  "sampling_id", limit: 4
   end
 
-  add_index "measures", ["analyte_id"], name: "index_measures_on_analyte_id", using: :btree
+  add_index "measures", ["sampling_id"], name: "index_measures_on_sampling_id", using: :btree
 
   create_table "samplings", force: :cascade do |t|
     t.integer  "analyte_id", limit: 4
@@ -147,6 +147,6 @@ ActiveRecord::Schema.define(version: 20150405173600) do
   add_foreign_key "analytes", "branches"
   add_foreign_key "analytes", "specie_profiles"
   add_foreign_key "branches", "companies"
-  add_foreign_key "measures", "analytes"
+  add_foreign_key "measures", "samplings"
   add_foreign_key "samplings", "analytes"
 end
