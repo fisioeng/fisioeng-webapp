@@ -35,35 +35,35 @@
       [
         {
           "name": "Control",
-          "data": getAleatory(20, 17, 49)
+          "data": getAleatory(24, 17, 49)
         },
         {
           "name": "Variation 1",
-          "data": getAleatory(20, 17, 49)
+          "data": getAleatory(24, 17, 49)
         },
         {
           "name": "Variation 2",
-          "data": getAleatory(20, 17, 49)
+          "data": getAleatory(24, 17, 49)
         }
       ],
       [
         {
           "name": "Control",
-          "data": getAleatory(20, 10, 70)
+          "data": getAleatory(24, 10, 70)
         },
         {
           "name": "Variation 1",
-          "data": getAleatory(20, 10, 70)
+          "data": getAleatory(24, 10, 70)
         }
       ],
       [
         {
           "name": "Control",
-          "data": getAleatory(20, 50, 130)
+          "data": getAleatory(24, 50, 130)
         },
         {
           "name": "Variation 1",
-          "data": getAleatory(20, 50, 130)
+          "data": getAleatory(24, 50, 130)
         }
       ]
     ];
@@ -91,7 +91,14 @@
           }
         },
         xAxis: {
-            categories: categories
+            type: 'datetime',
+            dateTimeLabelFormats: { // don't display the dummy year
+                month: '%e. %b',
+                year: '%b'
+            },
+            title: {
+                text: 'Date and Time'
+            }
         },
         yAxis: {
             title: {
@@ -99,7 +106,8 @@
             }
         },
         tooltip: {
-            valueSuffix: '°C'
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x:%e. %b}: {point.y:.2f}'
         },
         series: $scope.chartSeries,
         title: {
@@ -117,7 +125,7 @@
 
       var data = [];
       for (var i = 1; i <= amount; i++ ) {
-        data.push(Math.floor((Math.random() * (max - min)) + min ));
+        data.push([ Date.UTC(2015, 4, 21, i, 0, 0), Math.floor((Math.random() * (max - min)) + min )]);
       }
 
       return data;
