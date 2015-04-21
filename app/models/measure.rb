@@ -1,9 +1,10 @@
 class Measure < ActiveRecord::Base
-  paginates_per 25
-  max_paginates_per 100
-  belongs_to :analyte
+  belongs_to :sampling
 
-  def self.by_series offset=1, limit=25
+  paginates_per 10
+  max_paginates_per 100
+
+  def self.by_series offset=1, limit=10
     query = []
 
     self.group(:serie).each_with_index do |group, index|

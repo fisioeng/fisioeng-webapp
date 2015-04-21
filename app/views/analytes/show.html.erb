@@ -1,15 +1,21 @@
 <% content_for :nav do %>
   <%= render "common/top_nav" %>
 <% end %>
+<% content_for(:body_attributes) do %>
+  data-no-turbolink="true"
+<% end %>
 
-<div ng-controller="ShowAnalyteController" class="container">
+<div class="container">
   <% breadcrumb( :analyte, @company, @branch, @analyte ) %>
+
+  <div class="small pull-right" style="margin-right: 15px;"><%= page_entries_info @samplings %></div>
+  <%= render "samplings/list" %>
+  <%= paginate @samplings %>
 
   <div class="page-header">
     <h3>Analyte</h3>
   </div>
 
-  <%=  render "measures/graph/main" %>
   <table class="table table-bordered">
       <tr>
         <th width="150" colspan="2">
@@ -49,11 +55,6 @@
         <td><%= @analyte.lanado %></td>
       </tr>
   </table>
-
-  <div class="small pull-right" style="margin-right: 15px;"><%= page_entries_info @measures %></div>
-  <%= render "measures/list" %>
-  <%= paginate @measures %>
-
 </div>
 
 

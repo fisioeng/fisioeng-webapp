@@ -1,6 +1,6 @@
 def extract json, measure
   json.extract! measure, :id, :value, :unit, :dateandtime, :serie, :serie_label
-  json.url company_branch_analyte_measure_url(@company, @branch, @analyte, measure, format: :json)
+  json.url company_branch_analyte_sampling_measure_url(@company, @branch, @analyte, @sampling, measure, format: :json)
 end
 
 json.array!(@measures) do |data|

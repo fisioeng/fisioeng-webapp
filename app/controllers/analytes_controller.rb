@@ -10,7 +10,7 @@ class AnalytesController < InheritedResources::Base
   end
 
   def show
-    @measures = Measure.order(:dateandtime).page(params[:page])
+    @samplings = Sampling.order(:updated_at).page(params[:page])
   end
 
   def create

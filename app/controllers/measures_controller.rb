@@ -6,7 +6,9 @@ class MeasuresController < InheritedResources::Base
 
   def index
     if params[:filter]
-      @measures = Measure.by_series(0,25)
+      p = params[:p].to_f
+      l = params[:l].to_f
+      @measures = @sampling.measures.by_series(p,l)
     end
   end
 
@@ -19,6 +21,7 @@ class MeasuresController < InheritedResources::Base
       @company = Company.find(params[:company_id])
       @branch = Branch.find(params[:branch_id])
       @analyte = Analyte.find(params[:analyte_id])
+      @sampling = Sampling.find(params[:sampling_id])
     end
 
     def paginate_measures

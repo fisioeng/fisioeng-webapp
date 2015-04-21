@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h3>Samplings</h3>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @samplings) do |sampling| %>
+        <td><%= sampling.name %></td>
+        <td>
+          <div class="btn-group pull-right" role="group" aria-label="...">
+            <a href="<%= company_branch_analyte_sampling_url(@company, @branch, @analyte, sampling) %>" class="btn btn-default"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></a>
+            <%= link_to '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'.html_safe, company_branch_analyte_samplings_path(@company, @branch, @analyte, sampling), class: 'btn btn-default', method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

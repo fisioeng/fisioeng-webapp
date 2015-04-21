@@ -1,20 +1,19 @@
-<div class="page-header">
-  <%= link_to samplings_path, :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <%= link_to edit_sampling_path(@sampling), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-  <% end %>
-  <h1>Show sampling</h1>
+<% content_for :nav do %>
+  <%= render "common/top_nav" %>
+<% end %>
+<% content_for(:body_attributes) do %>
+  data-no-turbolink="true"
+<% end %>
+
+<div ng-controller="ShowAnalyteController" class="container">
+  <div class="page-header">
+    <h3><%= @sampling.name %></h3>
+  </div>
+
+  <%=  render "measures/graph/main" %>
+
+  <div class="small pull-right" style="margin-right: 15px;"><%= page_entries_info @measures %></div>
+  <%=  render "measures/list" %>
+  <%= paginate @measures %>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>Analyte:</dt>
-  <dd><%= @sampling.analyte %></dd>
-
-  <dt>Name:</dt>
-  <dd><%= @sampling.name %></dd>
-
-</dl>
