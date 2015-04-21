@@ -11,33 +11,43 @@
 
 User.create!({:email => "obama@email.com", :password => "obama123", :password_confirmation => "obama123" })
 
-@company = Company.create
-@branch  = @company.branches.create
-@analyte = @branch.analytes.create
+@company = Company.create!
+@branch  = @company.branches.create!
+@analyte = @branch.analytes.create!
+@sampling = @analyte.samplings.create!
 
-fields =[]
+@fields = []
 
-100000.times do
-  field << {
-    analyte: @analyte,
-    value: '',
-    unit: nil,
-    dateandtime: nil,
-    serie: 'serie1',
-    serie_label: 'serie1'
-  }
+def gen_f unit, range, label
+  f = []
+  m = 0
+  h = 0
+  for i in 1..1439
+    m += 1
+    if i % 60 == 0
+      m = 0
+      h += 1
+    end
+
+    if h % 24 == 0
+      h = 0
+    end
+
+    @fields << {
+      sampling: @sampling,
+      value: rand(range),
+      unit: unit,
+      dateandtime: Time.utc(2015, 4, 20, h, m, 0),
+      serie: label,
+      serie_label: label
+    }
+  end
 end
 
-100000.times do
-  fields << {
-    analyte: @analyte,
-    value: '',
-    unit: nil,
-    dateandtime: nil,
-    serie: 'serie2',
-    serie_label: 'serie2'
-  }
-end
+gen_f '°C', 29..44, 'control'
+gen_f '°C', 29..44, 'variation1'
+gen_f '%', 10..80, 'control'
+gen_f '%', 10..80, 'variation1'
 
-Measure.create!(fields)
+Measure.create!(@fields)
 

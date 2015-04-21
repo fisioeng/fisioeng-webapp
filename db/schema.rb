@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20150409021339) do
   create_table "measures", force: :cascade do |t|
     t.float    "value",       limit: 24
     t.string   "unit",        limit: 255
-    t.datetime "dateandtime",             null: false
+    t.datetime "dateandtime"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "serie",       limit: 255
