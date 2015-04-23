@@ -49,6 +49,13 @@
           headerFormat: '<b>{series.name}</b><br>',
           pointFormat: '{point.x:%e. %b}: {point.y:.2f}'
       },
+      plotOptions: {
+          spline: {
+              marker: {
+                  enabled: true
+              }
+          }
+      },
       series: $scope.chartSeries,
       title: {
         text: 'Analyte Measures'
@@ -80,7 +87,6 @@
       $scope.chartConfig.yAxis.title.text = $scope.axis.y.options[$scope.actualYAxis].label;
       $scope.chartConfig.series = $scope.chartSeries;
       $scope.chartConfig.loading = false;
-      console.log($scope.chartConfig);
     }
 
     function getAleatory ( amount, min, max ) {

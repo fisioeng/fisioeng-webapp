@@ -54,8 +54,6 @@
 
       });
 
-      console.log(groups);
-
       return groups;
     }
 
