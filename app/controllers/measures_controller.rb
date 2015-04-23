@@ -5,7 +5,7 @@ class MeasuresController < InheritedResources::Base
   respond_to :html, :xml, :json
 
   def index
-    @measures = @sampling.measures.by_series 0, 50
+    @measures = @sampling.measures.by_series 0, 30
   end
 
   private
