@@ -7,12 +7,11 @@ class Measure < ActiveRecord::Base
   def self.by_series offset=1, limit=10
     query = []
 
-    self.group(:serie).each_with_index do |group, index|
+    self.group(:serie).each do |group|
 
       current_query = self.where(serie: group.serie)
                           .limit(limit)
                           .offset(offset * limit)
-
       query << current_query
 
     end

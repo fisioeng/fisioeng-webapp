@@ -44,10 +44,10 @@ def gen_f unit, range, label
   end
 end
 
-gen_f '°C', 29..44, 'control'
-gen_f '°C', 29..44, 'variation1'
-gen_f '%', 10..80, 'control'
-gen_f '%', 10..80, 'variation1'
+gen_f '°C', 29..44, 'tempcontrol'
+gen_f '°C', 29..44, 'tempvariation1'
+gen_f '%', 10..80, 'uracontrol'
+gen_f '%', 10..80, 'uravariation1'
 
 Measure.create!(@fields)
 

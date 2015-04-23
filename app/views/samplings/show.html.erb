@@ -17,3 +17,4 @@
   <%= paginate @measures %>
 </div>
 
+<meta name="measures_route" content="<%= company_branch_analyte_sampling_measures_url(@company, @branch, @analyte, @sampling, format: :json) %>"

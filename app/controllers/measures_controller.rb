@@ -5,11 +5,7 @@ class MeasuresController < InheritedResources::Base
   respond_to :html, :xml, :json
 
   def index
-    if params[:filter]
-      p = params[:p].to_f
-      l = params[:l].to_f
-      @measures = @sampling.measures.by_series(p,l)
-    end
+    @measures = @sampling.measures.by_series 0, 50
   end
 
   private
