@@ -4,18 +4,36 @@ class Measure < ActiveRecord::Base
   paginates_per 10
   max_paginates_per 100
 
-  def self.by_series offset=1, limit=10
+  def self.by_series offset=nil, limit=nil, ini_time=nil, end_time=nil
     query = []
 
-    self.group(:serie).each do |group|
+    if offset.class == 'Fixnum' && limit.class == 'Fixnum'
+      offset = offset * limit
+    end
 
-      current_query = self.where(serie: group.serie)
-                          .limit(limit)
-                          .offset(offset * limit)
+    if ini_time != nil
+      ini_time = ["dateandtime >= ?", ini_time]
+    end
+
+    if end_time != nil
+      end_time = ["dateandtime <= ?", end_time]
+    end
+
+    group(:serie).each do |group|
+
+      current_query = where(ini_time)
+                      .where(end_time)
+                      .where(serie: group.serie)
+                      .limit(limit)
+                      .offset(offset)
+
+
+
+
       query << current_query
-
     end
 
     query
   end
+
 end
