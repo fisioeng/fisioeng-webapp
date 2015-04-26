@@ -19,5 +19,6 @@
 //= require highcharts/modules/exporting
 //= require highcharts-ng
 //= require angular-bootstrap
+//= require datetimepicker
 //
 //= require_tree .
