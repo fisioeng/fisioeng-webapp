@@ -4,6 +4,7 @@ class Measure < ActiveRecord::Base
   paginates_per 10
   max_paginates_per 100
 
+  # Select series with filter
   def self.by_series offset=nil, limit=nil, ini_time=nil, end_time=nil
     query = []
 
@@ -26,9 +27,6 @@ class Measure < ActiveRecord::Base
                       .where(serie: group.serie)
                       .limit(limit)
                       .offset(offset)
-
-
-
 
       query << current_query
     end
