@@ -3,8 +3,9 @@
     <button type="button" ng-click="changeYAxis(key, this)" ng-repeat="(key, ax) in y_axis_options" class="btn btn-default">{{ax}}</button>
   </div>
   <div class="pull-right">
-    <input graph-period ng-model="initial_date" type="text" class="col-sm-2 form-control" placeholder="Filter end date time" style="width:160px">
-    <input graph-period ng-model="end_date" type="text" class="col-sm-2 form-control" placeholder="Filter begin date time" style="width:160px">
+    <input graph-period ng-model="ini_dt" type="text" class="col-sm-2 form-control" placeholder="Filter end date time" style="width:160px">
+    <input graph-period ng-model="end_dt" type="text" class="col-sm-2 form-control" placeholder="Filter begin date time" style="width:160px">
+    <button type="button" ng-click="filterByDate()"  class="btn btn-info">Ok</button>
   </div>
   <div class="form-group" style="float:left; text-align: center; display: none;">
     <label for="inputPassword3" class="col-sm-6 control-label">Layout</label>

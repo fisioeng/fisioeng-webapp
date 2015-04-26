@@ -8,7 +8,7 @@
   GraphModifier.$inject = [];
 
   function GraphModifier() {
-
+    var y_axis_options = [];
     /**
      * Generate the data to graph
      * @param  {Array} data
@@ -25,6 +25,10 @@
 
 
       return groups;
+    };
+
+    this.y_axis_options = function() {
+      return y_axis_options;
     };
 
     function gen_groups (data) {
@@ -44,7 +48,7 @@
 
           if (angular.isUndefined(unitByIndex[serie.unit])) {
             unitByIndex[serie.unit] = group;
-
+            add_y_option(serie.unit);
             groups[unitByIndex[serie.unit]] = [];
 
             group++;
@@ -57,6 +61,23 @@
       return groups;
     }
 
+    function add_y_option (unit) {
+      var options = {
+        '°C': function (unit) {
+          y_axis_options.push('Temperature in ' + unit);
+        },
+        'default': function (unit) {
+          y_axis_options.push('Unit ' + unit);
+        }
+      }
+
+      if (angular.isFunction(options[unit])){
+        options[unit](unit);
+        return true;
+      }
+      options['default'](unit);
+      return false;
+    }
 
     function gen_serie (serieData) {
       var serie = {};

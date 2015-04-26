@@ -3,17 +3,15 @@
         <tr>
           <th style="vertical-align: middle;" width="200">Measure Data</th>
           <th style="vertical-align: middle;" width="100">Date and time</th>
-          <th style="vertical-align: middle;" width="30"></th>
+          <th style="vertical-align: middle;" width="100">Label</th>
         </tr>
     </thead>
     <tbody>
     <% @measures.each do |measure| %>
       <tr>
         <td style="vertical-align: middle;"><%= measure.value %> <%= measure.unit %></td>
+        <td style="vertical-align: middle;"><%= measure.serie_label %></td>
         <td style="vertical-align: middle;"><%= measure.created_at %></td>
-        <td style="vertical-align: middle;">
-            <a href="#" class="btn btn-default pull-right"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-        </td>
       </tr>
     <% end %>
     </tbody>
