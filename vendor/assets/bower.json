@@ -4,6 +4,7 @@
     "angular": "latest",
     "highcharts-ng": "latest",
     "highcharts": "latest",
-    "angular-bootstrap": "latest"
+    "angular-bootstrap": "latest",
+    "datetimepicker": "latest"
   }
 }
