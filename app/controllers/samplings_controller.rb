@@ -18,7 +18,7 @@ class SamplingsController < InheritedResources::Base
       @company = Company.find(params[:company_id])
       @branch = Branch.find(params[:branch_id])
       @analyte = Analyte.find(params[:analyte_id])
-      @sampling = Sampling.find(params[:id])
+      @sampling = @analyte.samplings.find(params[:id])
     end
 end
 
