@@ -2,25 +2,18 @@ class CompaniesController < InheritedResources::Base
   before_action :authenticate_user!
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
-  # GET /companies
-  # GET /companies.json
   def index
     @companies = Company.all
   end
 
-  # GET /companies/1
-  # GET /companies/1.json
   def show
     @branches = @company.branches
   end
 
-  # GET /companies/new
   def new
     @company = Company.new
   end
 
-  # POST /companies
-  # POST /companies.json
   def create
     @company = Company.new(company_params)
 
@@ -35,8 +28,6 @@ class CompaniesController < InheritedResources::Base
     end
   end
 
-  # PATCH/PUT /companies/1
-  # PATCH/PUT /companies/1.json
   def update
     respond_to do |format|
       if @company.update(company_params)
@@ -49,8 +40,6 @@ class CompaniesController < InheritedResources::Base
     end
   end
 
-  # DELETE /companies/1
-  # DELETE /companies/1.json
   def destroy
     @company.destroy
     respond_to do |format|
