@@ -1,5 +1,5 @@
 class MeasuresController < InheritedResources::Base
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!
   before_action :default_params
   before_action :paginate_measures, only: [:index]
   respond_to :html, :xml, :json
@@ -11,9 +11,21 @@ class MeasuresController < InheritedResources::Base
     @measures = @sampling.measures.by_series p, l, params[:ini_dt], params[:end_dt]
   end
 
+  def create
+    @measure = Measure.new(measure_params)
+
+    @measure.sampling = @sampling
+
+    if @measure.save
+      render json: @measure, status: :created
+    else
+      render json: @company.errors, status: :unprocessable_entity
+    end
+  end
+
   private
     def measure_params
-      params.require(:measure).permit(:analyte_id, :value, :unit, :dateandtime)
+      params.require(:measure).permit(:sampling_id, :value, :unit, :dateandtime, :serie)
     end
 
     def default_params
