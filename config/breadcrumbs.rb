@@ -38,6 +38,18 @@ crumb :new_analyte do |company, branch|
   parent :branch, company, branch
 end
 
+# new sampling
+crumb :sampling do |company, branch, analyte, sampling|
+  link sampling.name, new_company_branch_analyte_sampling_path(company, branch, analyte, sampling)
+  parent :analyte, company, branch, analyte
+end
+
+# new sampling
+crumb :new_sampling do |company, branch, analyte|
+  link 'New sampling', new_company_branch_analyte_sampling_path(company, branch, analyte)
+  parent :analyte, company, branch, analyte
+end
+
 # specie profile
 crumb :specie_profiles do
   link 'Specie profiles', specie_profiles_path
