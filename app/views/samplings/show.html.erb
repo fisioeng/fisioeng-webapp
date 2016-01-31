@@ -5,7 +5,9 @@
   data-no-turbolink="true"
 <% end %>
 
+
 <div class="container" ng-controller="GraphController">
+  <% breadcrumb( :sampling, @company, @branch, @analyte, @sampling ) %>
   <div class="page-header">
     <h3><%= @sampling.name %></h3>
   </div>

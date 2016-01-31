@@ -1,9 +1,17 @@
-<div class="page-header">
-  <%= link_to samplings_path, :class => 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <h1>New sampling</h1>
-</div>
+<% content_for :nav do %>
+  <%= render "common/top_nav" %>
+<% end %>
 
-<%= render 'form' %>
+<div class="container">
+  <% breadcrumb( :new_sampling, @company, @branch, @analyte ) %>
+
+  <div class="page-header">
+    <%= link_to company_branch_analyte_path(@company, @branch, @analyte), :class => 'btn btn-default' do %>
+      <span class="glyphicon glyphicon-list-alt"></span>
+      Back
+    <% end %>
+    <h1>Add Sampling</h1>
+  </div>
+
+  <%= render 'form' %>
+</div>
