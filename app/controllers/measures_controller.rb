@@ -15,7 +15,7 @@ class MeasuresController < InheritedResources::Base
 
   def create
     @measure = Measure.new(measure_params)
-    @measure.serie_label = "{#{@measure.unit} - #{@measure.serie}"
+    @measure.serie_label = "#{@measure.unit} - #{@measure.serie}"
     @measure.sampling = @sampling
 
     if @measure.save
