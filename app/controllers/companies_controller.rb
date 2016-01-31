@@ -3,7 +3,7 @@ class CompaniesController < InheritedResources::Base
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   def index
-    @companies = Company.all
+    @companies = current_user.companies.all
   end
 
   def show
