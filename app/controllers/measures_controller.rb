@@ -1,6 +1,8 @@
 class MeasuresController < InheritedResources::Base
-  skip_before_action :authenticate_user!
-  before_action :default_params
+  skip_before_action :authenticate_user!, only: [:create]
+  before_action :set_company, :set_branch, :set_analyte, except: [:create]
+  before_action :set_sampling
+
   before_action :paginate_measures, only: [:index]
   respond_to :html, :xml, :json
 
@@ -13,7 +15,7 @@ class MeasuresController < InheritedResources::Base
 
   def create
     @measure = Measure.new(measure_params)
-
+    @measure.serie_label = "{#{@measure.unit} - #{@measure.serie}"
     @measure.sampling = @sampling
 
     if @measure.save
@@ -25,14 +27,35 @@ class MeasuresController < InheritedResources::Base
 
   private
     def measure_params
-      params.require(:measure).permit(:sampling_id, :value, :unit, :dateandtime, :serie)
+      params.require(:measure).permit(:value, :unit, :dateandtime, :serie)
     end
 
-    def default_params
-      @company = Company.find(params[:company_id])
-      @branch = Branch.find(params[:branch_id])
-      @analyte = Analyte.find(params[:analyte_id])
+    def set_company
+      @company = current_user.companies.find(params[:company_id])
+      unless @company
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    end
+
+    def set_branch
+      @branch = @company.branches.find(params[:branch_id])
+      unless @branch
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    end
+
+    def set_analyte
+      @analyte = @branch.analytes.find(params[:analyte_id])
+      unless @analyte
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    end
+
+    def set_sampling
       @sampling = Sampling.find(params[:sampling_id])
+      unless @sampling
+        raise ActionController::RoutingError.new('Not Found')
+      end
     end
 
     def paginate_measures

@@ -54,7 +54,7 @@ class SamplingsController < InheritedResources::Base
 
     def set_analyte
       @analyte = @branch.analytes.find(params[:analyte_id])
-      unless @branch
+      unless @analyte
         raise ActionController::RoutingError.new('Not Found')
       end
     end

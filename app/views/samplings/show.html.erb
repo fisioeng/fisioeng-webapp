@@ -8,8 +8,16 @@
 
 <div class="container" ng-controller="GraphController">
   <% breadcrumb( :sampling, @company, @branch, @analyte, @sampling ) %>
-  <div class="page-header">
-    <h3><%= @sampling.name %></h3>
+  <div class="page-header row">
+    <h3 class="pull-left"><%= @sampling.name %></h3>
+    <form style="width: 600px !important;"class="form-inline col-sm-12 pull-right">
+      <div class="form-group pull-right">
+        <label style="width: 100px" class="col-sm-2 control-label">Api URL</label>
+        <div class="col-sm-10">
+          <input style="width: 300px" class="form-control" readonly value="<%= measure_new_url(@sampling.id)%>">
+        </div>
+      </div>
+    </form>
   </div>
 
   <%=  render "measures/graph/main" %>
