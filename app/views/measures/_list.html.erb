@@ -10,8 +10,8 @@
     <% @measures.each do |measure| %>
       <tr>
         <td style="vertical-align: middle;"><%= measure.value %> <%= measure.unit %></td>
-        <td style="vertical-align: middle;"><%= measure.serie_label %></td>
         <td style="vertical-align: middle;"><%= measure.created_at %></td>
+        <td style="vertical-align: middle;"><%= measure.serie_label %></td>
       </tr>
     <% end %>
     </tbody>
