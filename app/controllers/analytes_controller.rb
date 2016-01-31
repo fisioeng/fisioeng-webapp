@@ -1,6 +1,7 @@
 class AnalytesController < InheritedResources::Base
   before_action :authenticate_user!
-  before_action :setter, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, :set_branch
+  before_action :set_analyte, only: [:show, :edit, :update, :destroy]
   before_action :setter_profiles, only: [:new, :edit]
 
   respond_to :html, :xml, :json
@@ -14,8 +15,6 @@ class AnalytesController < InheritedResources::Base
   end
 
   def create
-    @company = Company.find(params[:company_id])
-    @branch = Branch.find(params[:branch_id])
     @analyte = Analyte.new(analyte_params)
 
     @analyte.branch = @branch
@@ -46,10 +45,23 @@ class AnalytesController < InheritedResources::Base
   end
 
   private
-    def setter
-      @company = Company.find(params[:company_id])
-      @branch = Branch.find(params[:branch_id])
-      @analyte = Analyte.find(params[:id])
+
+    def set_company
+      @company = current_user.companies.find(params[:company_id])
+      unless @company
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    end
+
+    def set_branch
+      @branch = @company.branches.find(params[:branch_id])
+      unless @branch
+        raise ActionController::RoutingError.new('Not Found')
+      end
+    end
+
+    def set_analyte
+      @analyte = @branch.analytes.find(params[:id])
     end
 
     def analyte_params
