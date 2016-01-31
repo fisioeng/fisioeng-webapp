@@ -16,6 +16,7 @@ class CompaniesController < InheritedResources::Base
 
   def create
     @company = Company.new(company_params)
+    @company.user = current_user
 
     respond_to do |format|
       if @company.save
@@ -49,12 +50,10 @@ class CompaniesController < InheritedResources::Base
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_company
-      @company = Company.find(params[:id])
+      @company = current_user.companies.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
       params.require(:company).permit(:cnpj, :alias, :name, :logo, :description)
     end
