@@ -1,20 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+@user = User.create!({:email => "obama@email.com", :password => "obama123", :password_confirmation => "obama123" })
 
-# require "populator"
-# require 'faker'
-
-User.create!({:email => "obama@email.com", :password => "obama123", :password_confirmation => "obama123" })
-
-@company = Company.create!
-@branch  = @company.branches.create!
-@analyte = @branch.analytes.create!
-@sampling = @analyte.samplings.create!
+@company = Company.create! user: @user, alias: 'Univasf', cnpj: '09437591000133'
+@branch  = @company.branches.create! alias: 'Any'
+@analyte = @branch.analytes.create! name: 'Tier'
+@sampling = @analyte.samplings.create! name: 'Example'
 
 @fields = []
 
@@ -22,7 +11,7 @@ def gen_f unit, range, label
   f = []
   m = 0
   h = 0
-  for i in 1..1439
+  for i in 1..100
     m += 1
     if i % 60 == 0
       m = 0
@@ -37,7 +26,7 @@ def gen_f unit, range, label
       sampling: @sampling,
       value: rand(range),
       unit: unit,
-      dateandtime: Time.utc(2015, 4, 20, h, m, 0),
+      dateandtime: Time.utc(Time.now.year, Time.now.month, Time.now.day, h, m, 0),
       serie: label,
       serie_label: label
     }
