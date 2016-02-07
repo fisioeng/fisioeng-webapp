@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/fisioeng/fisioeng-webapp/badges/gpa.svg)](https://codeclimate.com/github/fisioeng/fisioeng-webapp)
+
 # Fisioeng - Web Application
 
 Hello! It's alright?
