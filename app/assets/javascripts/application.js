@@ -20,5 +20,6 @@
 //= require highcharts-ng
 //= require angular-bootstrap
 //= require datetimepicker
+//= require moment
 //
 //= require_tree .
