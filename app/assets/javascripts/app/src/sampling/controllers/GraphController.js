@@ -9,15 +9,13 @@
 
   function GraphController(GraphHttpFilter, $scope, GraphModifier, ChartConfig) {
 
-    var
-        /**
-         * Series of graph
-         */
-        series;
+    var series,
+        $periodsContainer = $('form .js-period-inputs'),
+        interval;
 
     $scope.ini_dt = '';
     $scope.end_dt = '';
-
+    $scope.auto_update_time = 5;
     $scope.actualYAxis = 0;
     $scope.y_axis_options = [];
 
@@ -52,6 +50,41 @@
       $scope.actualYAxis = serie;
       $scope.chartSeries = series[serie];
       updateGraph();
+    };
+
+    $scope.auto = function() {
+      if (!$scope.auto_update){
+        $periodsContainer.show();
+        clearInterval(interval);
+        return;
+      }
+
+      $periodsContainer.hide();
+
+      function getData() {
+        var minutesAgo = moment.duration(1, 'minutes'),
+            date = moment(Date.now());
+
+        date.subtract(minutesAgo);
+
+        GraphHttpFilter.setIniDt(date.format('Y/MM/DD HH:mm'))
+                       .setLimit('')
+                       .setPage('');
+
+        GraphHttpFilter
+          .requestData()
+          .then(function(data) {
+            series = GraphModifier.gen(data);
+            $scope.chartSeries = series[$scope.actualYAxis];
+            updateGraph();
+          });
+
+          console.log(date.toDate());
+          console.log(Date.now());
+      }
+
+      getData();
+      interval = setInterval(getData, $scope.auto_update_time * 1000)
     };
 
     function updateGraph() {

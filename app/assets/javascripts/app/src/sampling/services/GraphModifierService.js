@@ -9,20 +9,15 @@
 
   function GraphModifier() {
     var y_axis_options = [];
-    /**
-     * Generate the data to graph
-     * @param  {Array} data
-     * @return {Array}
-     */
+
     this.gen = function (data) {
       var groups;
-      if ( !angular.isArray(data) ) {
+
+      if (!angular.isArray(data)) {
         return false;
       }
 
       groups = gen_groups(data);
-
-
 
       return groups;
     };
@@ -35,7 +30,7 @@
       var groups = [],
           series = [],
           unitByIndex = {},
-          group  = 0,
+          group = 0,
           serie;
 
       if (!angular.isArray(data)) {
@@ -62,21 +57,7 @@
     }
 
     function add_y_option (unit) {
-      var options = {
-        '°C': function (unit) {
-          y_axis_options.push('Temperature in ' + unit);
-        },
-        'default': function (unit) {
-          y_axis_options.push('Unit ' + unit);
-        }
-      }
-
-      if (angular.isFunction(options[unit])){
-        options[unit](unit);
-        return true;
-      }
-      options['default'](unit);
-      return false;
+      y_axis_options.push('Unit ' + unit);
     }
 
     function gen_serie (serieData) {
@@ -86,6 +67,7 @@
         serieData.forEach(function(measure, index) {
           if (0 === index) {
             serie.name = measure.serie_label;
+            serie.id = measure.serie;
             serie.data = [];
             serie.unit = measure.unit;
           }

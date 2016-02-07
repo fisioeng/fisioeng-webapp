@@ -6,7 +6,7 @@ class SamplingsController < InheritedResources::Base
   respond_to :html, :xml, :json
 
   def show
-    @measures = @sampling.measures.order(:updated_at).page(params[:page])
+    @measures = @sampling.measures.order(created_at: :desc).page(params[:page])
   end
 
   def create
